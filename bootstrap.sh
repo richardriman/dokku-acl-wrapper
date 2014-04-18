@@ -22,13 +22,13 @@ fi
 TARGET="/usr/local/bin/dokku-acl-wrapper"
 
 cp dokku-acl-wrapper ${TARGET}
-cp .acl.sample /home/dokku/.acl.sample
+cp ACL.sample /home/dokku/ACL.sample
 chmod +x ${TARGET}
 echo ${TARGET} > /home/dokku/.sshcommand
-touch /home/dokku/.acl
+touch /home/dokku/ACL
 
 echo "Almost done!"
-echo "Now you need define users and their applications to the file /home/dokku/.acl ."
+echo "Now you need define users and their applications to the file /home/dokku/ACL ."
 echo "Format of this file is pretty simple:"
 echo
 echo "user1:app1 app2"

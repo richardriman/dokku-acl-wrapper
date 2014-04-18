@@ -14,14 +14,14 @@ Bootstrap script is usable only if you have Dokku installed in standard location
     # cd /usr/local/bin
     # wget https://raw.github.com/richardriman/dokku-acl-wrapper/master/dokku-acl-wrapper
     # chmod +x dokku-acl-wrapper
-    # touch /home/dokku/.acl
+    # touch /home/dokku/ACL
     # echo "/usr/local/bin/dokku-acl-wrapper" > /home/dokku/.sshcommand
 
 ## Configuration
 
-Now you need define users and their applications to the file /home/dokku/.acl .
+Now you need define users and their applications in the file /home/dokku/ACL.
 
-Format is very simple:
+Format of the ACL file is pretty simple:
 
     user1:app1 app2
     user2:app3

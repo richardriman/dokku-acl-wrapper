@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-userline=`cat /home/dokku/.acl | grep ${NAME}\:`
-# echo "DEBUG: $@"
+userline=`cat /home/dokku/ACL | grep ${NAME}\:`
+
 if [[ $? == 0 ]]; then
     # user found in ACL file
     echo "Hi ${NAME}!"
@@ -14,7 +14,7 @@ if [[ $? == 0 ]]; then
         exit 1
     done
 else
-    echo "I don't know you, go away!"
+    echo "You don't have access to any application yet."
     exit -1
 fi
 
