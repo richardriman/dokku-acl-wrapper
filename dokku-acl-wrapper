@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
+[[ $DOKKU_TRACE ]] && set -x
+
 userline=`cat /home/dokku/ACL | grep ${NAME}\:`
 
 if [[ $? == 0 ]]; then
     # user found in ACL file
-    echo "Hi ${NAME}!"
+    argApp=`echo $2 | sed -e "s/^'//" -e "s/'$//"`
     for app in ${userline##*:}; do
         if [[ $app == $2 ]]; then
-            source `cat /home/dokku/.sshcommand.prev` $@
+            `cat /home/dokku/.sshcommand.prev` "$@"
             exit $?
         fi
         echo "You don't have application named '$2'. Please verify application name and try again."
@@ -17,5 +21,3 @@ else
     echo "You don't have access to any application yet."
     exit -1
 fi
-
-exit 0
