@@ -7,7 +7,7 @@ if [[ $? == 0 ]]; then
     echo "Hi ${NAME}!"
     for app in ${userline##*:}; do
         if [[ $app == $2 ]]; then
-            source /usr/local/bin/dokku $@
+            source `cat /home/dokku/.sshcommand.prev` $@
             exit $?
         fi
         echo "You don't have application named '$2'. Please verify application name and try again."

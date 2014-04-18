@@ -24,8 +24,9 @@ TARGET="/usr/local/bin/dokku-acl-wrapper"
 cp dokku-acl-wrapper ${TARGET}
 cp ACL.sample /home/dokku/ACL.sample
 chmod +x ${TARGET}
-echo ${TARGET} > /home/dokku/.sshcommand
 touch /home/dokku/ACL
+cp /home/dokku/.sshcommand /home/dokku/.sshcommand.prev
+echo ${TARGET} > /home/dokku/.sshcommand
 
 echo "Almost done!"
 echo "Now you need define users and their applications to the file /home/dokku/ACL ."
