@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+userline=`cat /home/dokku/.acl | grep ${NAME}\:`
+# echo "DEBUG: $@"
+if [[ $? == 0 ]]; then
+    # user found in ACL file
+    echo "Hi ${NAME}!"
+    for app in ${userline##*:}; do
+        if [[ $app == $2 ]]; then
+            source /usr/local/bin/dokku $@
+            exit $?
+        fi
+        echo "You don't have application named '$2'. Please verify application name and try again."
+        exit 1
+    done
+else
+    echo "I don't know you, go away!"
+    exit -1
+fi
+
+exit 0
