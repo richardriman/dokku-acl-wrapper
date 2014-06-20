@@ -7,7 +7,7 @@ PATH="$STUBS:.:$PATH"
 DOKKU_ROOT="test/fixtures/dokku"
 dokku_acl_wrapper="PATH=$PATH HOME=$DOKKU_ROOT DOKKU_ROOT=$DOKKU_ROOT dokku-acl-wrapper"
 
-HELP="    config <app>                                    display the config vars for an application\n    config:get <app> KEY                            display a config value for an application\n    config:set <app> KEY=VALUE [KEY2=VALUE2 ...]    set one or more config vars for an application\n    config:unset <app> KEY [KEY2 ...]               unset one or more config vars for an application\n    help                                            print the list of commands\n    logs <app> [-t]                                 show the last logs for an application (-t follows)\n    run <app> <cmd>                                 run a command in the environment of an application"
+HELP="[stub: dokku help]"
 
 # should print a help message when no command set
 assert "$dokku_acl_wrapper" "Usage:\n$HELP"
