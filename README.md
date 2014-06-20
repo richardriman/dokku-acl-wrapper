@@ -1,6 +1,8 @@
 dokku-acl-wrapper
 =================
 
+[![Build Status](https://travis-ci.org/richardriman/dokku-acl-wrapper.svg?branch=master)](https://travis-ci.org/richardriman/dokku-acl-wrapper)
+
 Wrapper for Dokku that adds additional simple access control.
 
 ## Installing
