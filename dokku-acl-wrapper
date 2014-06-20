@@ -4,20 +4,44 @@ set -eo pipefail
 
 [[ $DOKKU_TRACE ]] && set -x
 
-userline=`cat /home/dokku/ACL | grep ${NAME}\:`
+# help
+function print_help() {
+    echo -e "    config <app>                                    display the config vars for an application"
+    echo -e "    config:get <app> KEY                            display a config value for an application"
+    echo -e "    config:set <app> KEY=VALUE [KEY2=VALUE2 ...]    set one or more config vars for an application"
+    echo -e "    config:unset <app> KEY [KEY2 ...]               unset one or more config vars for an application"
+    echo -e "    help                                            print the list of commands"
+    echo -e "    logs <app> [-t]                                 show the last logs for an application (-t follows)"
+    echo -e "    run <app> <cmd>                                 run a command in the environment of an application"
+}
+
+function echoerr() {
+    echo "$@" 1>&2
+}
+
+if [[ "$1" == "help" ]]; then
+    print_help
+    exit 0
+elif [[ "$1" == "" ]]; then
+    echo "Usage:"
+    print_help
+    exit 1
+fi
+
+userline="`grep "^${NAME}\:" ~/ACL`"
 
 if [[ $? == 0 ]]; then
     # user found in ACL file
     argApp=`echo $2 | sed -e "s/^'//" -e "s/'$//"`
     for app in ${userline##*:}; do
         if [[ $app == $2 ]]; then
-            `cat /home/dokku/.sshcommand.prev` "$@"
+            `cat ~/.sshcommand.prev` "$@"
             exit $?
         fi
-        echo "You don't have application named '$2'. Please verify application name and try again."
+        echoerr "You don't have application named '$argApp'. Please verify application name and try again."
         exit 1
     done
 else
-    echo "You don't have access to any application yet."
-    exit -1
+    echoerr "You don't have access to any application yet."
+    exit 2
 fi
