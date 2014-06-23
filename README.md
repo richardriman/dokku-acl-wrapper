@@ -17,6 +17,7 @@ Bootstrap script is usable only if you have Dokku installed in standard location
     # wget https://raw.github.com/richardriman/dokku-acl-wrapper/master/dokku-acl-wrapper
     # chmod +x dokku-acl-wrapper
     # touch /home/dokku/ACL
+    # mv /home/dokku/.sshcommand /home/dokku/.sshcommand.prev
     # echo "/usr/local/bin/dokku-acl-wrapper" > /home/dokku/.sshcommand
 
 ## Configuration
