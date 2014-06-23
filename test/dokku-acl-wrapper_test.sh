@@ -21,6 +21,10 @@ assert_raises "$dokku_acl_wrapper help" 0
 assert "NAME=user1 $dokku_acl_wrapper config app1" "[stub: dokku config app1]"
 assert_raises "NAME=user1 $dokku_acl_wrapper config app1" 0
 
+# user1 should have access to app1
+assert "NAME=user1 $dokku_acl_wrapper config app2" "[stub: dokku config app2]"
+assert_raises "NAME=user1 $dokku_acl_wrapper config app2" 0
+
 # user1 shouldn't have access to app3
 assert "NAME=user1 $dokku_acl_wrapper config app3" ""
 assert "NAME=user1 $dokku_acl_wrapper config app3 2>&1" "You don't have application named 'app3'. Please verify application name and try again."

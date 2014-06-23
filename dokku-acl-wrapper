@@ -24,13 +24,13 @@ if [[ $? == 0 ]]; then
     # user found in ACL file
     argApp=`echo $2 | sed -e "s/^'//" -e "s/'$//"`
     for app in ${userline##*:}; do
-        if [[ $app == $2 ]]; then
+        if [ "$app" == "$argApp" ]; then
             `cat ~/.sshcommand.prev` "$@"
             exit $?
         fi
-        echoerr "You don't have application named '$argApp'. Please verify application name and try again."
-        exit 1
     done
+    echoerr "You don't have application named '$argApp'. Please verify application name and try again."
+    exit 1
 else
     echoerr "You don't have access to any application yet."
     exit 2
