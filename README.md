@@ -9,7 +9,7 @@ Wrapper for Dokku that adds additional simple access control.
 
     $ wget -qO- https://raw.github.com/richardriman/dokku-acl-wrapper/master/bootstrap.sh | sudo bash
 
-Bootstrap script is usable only if you have Dokku installed in standard location. If don't, you must do it manuly.
+Bootstrap script is usable only if you have Dokku installed in standard location. If don't, you must do it manually.
 
 ## Manual Installation
 
